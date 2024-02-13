@@ -30,18 +30,19 @@
 
             // Get the user's input from the input box
             var userInput = document.getElementById("sentenceInput").value;
-            
+            var userInputLowercase = userInput.toLowerCase();
             // Display the user's input in the user output area
             userOutputElement.textContent = "Your sentence: " + userInput;
 
             // Split the sentence into individual words
-            var sentence = userInput.split(" ");
+            var sentence = userInputLowercase.split(" ");
             
             // Compare each word in the sentence to every word in the dictionary, and provide the words POS
             var POSArray = [];
             for (var i = 0; i < sentence.length; i++){
                 if (dictionary.hasOwnProperty(sentence[i])){
-                    POSArray.push(" "+ dictionary[sentence[i]]);
+                    POSArray.push(" " + sentence[i]);
+                    POSArray.push(" " + dictionary[sentence[i]]);
                     computerOutputElement.textContent = "Parts of speech:" + POSArray;
                 } else if (!dictionary.hasOwnProperty(sentence[i])){
                     computerOutputElement.textContent = " ";
