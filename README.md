@@ -1,4 +1,5 @@
-Heads up, I'm not sure what I'm doing or if any if this is right, so good luck if you're trying to use it 🫡.
+WORK IN PROGRESS!!
+Heads up, I'm not sure what I'm doing or if any if this is right, so good luck if you're trying to use it.
 When I refer to part of speech, I normally write pos/POS.
 
 also, i'm currently in the midst of migrating all this code from code.org into this repository which is easier said than done
