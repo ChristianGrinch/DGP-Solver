@@ -38,9 +38,13 @@
             var sentence = userInput.split(" ");
             
             // Compare each word in the sentence to every word in the dictionary, and provide the words POS
+            var POSArray = [];
             for (var i = 0; i < sentence.length; i++){
                 if (dictionary.hasOwnProperty(sentence[i])){
-                    computerOutputElement.textContent = "Parts of speech: " + dictionary[sentence[i]]
+                    POSArray.push(" "+ dictionary[sentence[i]]);
+                    computerOutputElement.textContent = "Parts of speech:" + POSArray;
+                } else if (!dictionary.hasOwnProperty(sentence[i])){
+                    computerOutputElement.textContent = " ";
                 }
             }
         });
