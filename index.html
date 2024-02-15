@@ -7,48 +7,67 @@
 </head>
 <body>
     <script src="dictionary.js"></script>
-    <h2>Input your sentence below and hit enter or click submit</h2>
-    <form id="sentenceForm">
-        <!--Sentence input box-->
-        <input type="text" placeholder="Input your sentence here" id="sentenceInput">
-        <!--Submit button-->
-        <input type="submit" >
-    </form>
-    <div id="userSentenceOutput"></div>
-    <div id="computerSentenceOutput"></div>
-    <script>
-        
-        // Get references to output elements
-        var userOutputElement = document.getElementById("userSentenceOutput");
-        var computerOutputElement = document.getElementById("computerSentenceOutput");
-        // Get reference to the form
-        var form = document.getElementById("sentenceForm");
-
-        form.addEventListener("submit", function(event){
-            // Prevent the default form submission behavior (idk what this means, gpt said it)
-            event.preventDefault();
-
-            // Get the user's input from the input box
-            var userInput = document.getElementById("sentenceInput").value;
-            var userInputLowercase = userInput.toLowerCase();
-            // Display the user's input in the user output area
-            userOutputElement.textContent = "Your sentence: " + userInput;
-
-            // Split the sentence into individual words
-            var sentence = userInputLowercase.split(" ");
-            
-            // Compare each word in the sentence to every word in the dictionary, and provide the words POS
-            var POSArray = [];
-            for (var i = 0; i < sentence.length; i++){
-                if (dictionary.hasOwnProperty(sentence[i])){
-                    POSArray.push(" " + sentence[i]);
-                    POSArray.push(" " + dictionary[sentence[i]]);
-                    computerOutputElement.textContent = "Parts of speech:" + POSArray;
-                } else if (!dictionary.hasOwnProperty(sentence[i])){
-                    computerOutputElement.textContent = " ";
-                }
-            }
-        });
+    <div id="screen1">
+      <h2>Input your sentence below and hit enter or click submit</h2>
+      <form id="sentenceForm">
+          <!--Sentence input box-->
+          <input type="text" placeholder="Input your sentence here" id="sentenceInput">
+          <!--Submit button-->
+          <input type="submit" >
+      </form>
+      <div id="userSentenceOutput"></div>
+      <div id="computerSentenceOutput"></div>
+      <button id="button2">Go to Screen 2.</button>
+      <script>
+          
+          // Get references to output elements
+          var userOutputElement = document.getElementById("userSentenceOutput");
+          var computerOutputElement = document.getElementById("computerSentenceOutput");
+          // Get reference to the form
+          var form = document.getElementById("sentenceForm");
+  
+          form.addEventListener("submit", function(event){
+              // Prevent the default form submission behavior (idk what this means, gpt said it)
+              event.preventDefault();
+  
+              // Get the user's input from the input box
+              var userInput = document.getElementById("sentenceInput").value;
+              var userInputLowercase = userInput.toLowerCase();
+              // Display the user's input in the user output area
+              userOutputElement.textContent = "Your sentence: " + userInput;
+  
+              // Split the sentence into individual words
+              var sentence = userInputLowercase.split(" ");
+              
+              // Compare each word in the sentence to every word in the dictionary, and provide the words POS
+              var POSArray = [];
+              for (var i = 0; i < sentence.length; i++){
+                  if (dictionary.hasOwnProperty(sentence[i])){
+                      POSArray.push(" " + sentence[i]);
+                      POSArray.push(" " + dictionary[sentence[i]]);
+                      computerOutputElement.textContent = "Parts of speech:" + POSArray;
+                  } else if (!dictionary.hasOwnProperty(sentence[i])){
+                      computerOutputElement.textContent = " ";
+                  }
+              }
+          });
+      </script>
+    </div>
+    <div id="screen2" style="display: none;">
+    <!-- Add content for Screen 2 here -->
+    <button id="button3">Go to Screen 1</button>
+  </div>
+  <script>
+      // Make screen 1 & 2 buttons work
+      document.getElementById("button2").addEventListener("click", function() {
+        document.getElementById("screen2").style.display = "block";
+        document.getElementById("screen1").style.display = "none";
+      });
+      
+      document.getElementById("button3").addEventListener("click", function() {
+        document.getElementById("screen1").style.display = "block";
+        document.getElementById("screen2").style.display = "none";
+      });
     </script>
 </body>
 </html>
