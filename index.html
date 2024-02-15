@@ -19,7 +19,6 @@
       <div id="computerSentenceOutput"></div>
       <button id="button2">Go to Screen 2.</button>
       <script>
-          
           // Get references to output elements
           var userOutputElement = document.getElementById("userSentenceOutput");
           var computerOutputElement = document.getElementById("computerSentenceOutput");
@@ -68,6 +67,17 @@
         document.getElementById("screen1").style.display = "block";
         document.getElementById("screen2").style.display = "none";
       });
+      // Add event listeners for keyboard input
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "1") {
+          document.getElementById("screen1").style.display = "block";
+          document.getElementById("screen2").style.display = "none";
+        } else if (event.key === "2") {
+          document.getElementById("screen2").style.display = "block";
+          document.getElementById("screen1").style.display = "none";
+        }
+      });
+
     </script>
 </body>
 </html>
